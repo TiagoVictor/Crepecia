@@ -1,0 +1,46 @@
+﻿CREATE TABLE tb_produto(
+id_produto		INTEGER,
+nome_produto		VARCHAR(60),
+quantidade		INTEGER,
+preco			NUMERIC(7,2),
+fg_ativo		INTEGER,
+CONSTRAINT pk_produto_id_produto PRIMARY KEY(id_produto));
+
+ALTER TABLE tb_produto ADD column data_adicionado	DATE;
+
+INSERT INTO tb_produto(id_produto,nome_produto,quantidade,preco,fg_ativo)
+VALUES
+('1','agua','10',5.55,'1');
+
+SELECT * FROM tb_produto;
+
+CREATE TABLE tb_funcionario(
+id_funcionario		INTEGER,
+nome_funcionario	VARCHAR(60),
+fg_ativo		INTEGER,
+CONSTRAINT pk_funcionario_id_funcionario PRIMARY KEY(id_funcionario));
+
+INSERT INTO tb_funcionario(id_funcionario,nome_funcionario,fg_ativo)
+VALUES
+(1,'ADMIN',1);
+
+SELECT * FROM tb_funcionario;
+
+CREATE TABLE tb_venda(
+id_funcionario		INTEGER,
+id_produto		INTEGER,
+quantidade		INTEGER,
+valor			NUMERIC(7,2),
+data_venda		DATE,
+CONSTRAINT fk_venda_id_funcionario FOREIGN KEY(id_funcionario) REFERENCES tb_funcionario(id_funcionario),
+CONSTRAINT fk_venda_id_produto FOREIGN KEY(id_produto) REFERENCES tb_produto(id_produto));
+
+INSERT INTO tb_venda(id_funcionario,id_produto,quantidade,valor,data_venda)
+VALUES
+(1,1,'5',5*5.55,now());
+
+SELECT * FROM tb_venda;
+
+SELECT tb_funcionario.id_funcionario,tb_funcionario.nome_funcionario,tb_venda.valor,tb_venda.data_venda 
+FROM tb_funcionario
+INNER JOIN tb_venda ON tb_funcionario.id_funcionario = tb_venda.id_funcionario;
