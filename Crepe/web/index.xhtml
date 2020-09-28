@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Login</title>
+        <link rel="stylesheet" type="text/css" href="#{facesContext.externalContext.requestContextPath}/css/css.css" media="screen" />
+    </h:head>
+    <h:body>
+        <div class="login">
+            <div id="login-img">
+                <img src="img/template.png"
+                     width="300px"
+                     heigt="300px">
+                </img>
+            </div>
+            <h:form id="Form">
+                <p:outputLabel value="Usuario:"/>
+                <br></br>
+                <p:inputText></p:inputText>
+                <br></br>
+                <p:outputLabel value="Senha:"/>
+                <br></br>
+                <p:inputText></p:inputText>
+                <br></br>
+                <p:commandButton value="Entrar" action="#{feijao.montarPagina()}" update="Form" ></p:commandButton>
+                </h:form>
+        </div>
+    </h:body>
+</html>
+
